@@ -4,28 +4,26 @@ import { enrollInScheme } from '../redux/slices/userSlice';
 
 const Schemes = () => {
   const schemes = useSelector((state) => state.admin.schemes);
-  const currentUser = useSelector((state) => state.user.currentUser);
+  // const currentUser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
-  
-  // State to store enrolled schemes
+
+  // const [newScheme, setNewScheme] = useState({
+  //   name: '',
+  //   interestRate: '',
+  //   maturityDate: '',
+  // });
+
   const [enrolledSchemes, setEnrolledSchemes] = useState([]);
 
   if (!schemes || schemes.length === 0) {
-    // Handle the case where schemes is undefined or empty
     return (
       <div>No schemes available.</div>
     );
   }
 
-  // Filter out schemes that the user is not enrolled in.
-  const activeSchemes = schemes.filter((scheme) => !currentUser.enrolledSchemes.includes(scheme.id));
-
   const handleEnroll = (scheme) => {
     dispatch(enrollInScheme(scheme));
-    
-    // Update the list of enrolled schemes in the state
     setEnrolledSchemes(enrolledSchemes.concat(scheme));
-
     alert(`You have successfully enrolled in the ${scheme.name} scheme.`);
   };
 
@@ -34,13 +32,13 @@ const Schemes = () => {
       <div>
         <h2 className='text-blue-500'>View and Enroll in Schemes</h2>
         <ul className='mt-5'>
-          {activeSchemes.map((scheme, index) => (
+          {schemes.map((scheme, index) => (
             <li key={index} className='mt-5'>
               <h3>Scheme Name: {scheme.name}</h3>
               <p>Interest Rate: {scheme.interestRate}%</p>
               <p>Maturity Date: {scheme.maturityDate}</p>
               <button onClick={() => handleEnroll(scheme)}
-                className="bg-blue-500 hover-bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 px-5 mt-5"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 px-5 mt-5"
               >
                 Enroll
               </button>
@@ -50,7 +48,7 @@ const Schemes = () => {
       </div>
 
       {enrolledSchemes.length > 0 && (
-        <div className='mb-5'> 
+        <div className='mb-5'>
           <h2 className='text-blue-500'>Enrolled Schemes</h2>
           <ul>
             {enrolledSchemes.map((enrolledScheme, index) => (

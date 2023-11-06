@@ -2,7 +2,27 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   users: [],
-  schemes: [],
+  schemes: [
+    {
+      id: 1,
+      name: 'Fixed Deposit',
+      interestRate: 5,
+      maturityDate: '2024-12-31',
+    },
+    {
+      id: 2,
+      name: 'Savings Account',
+      interestRate: 4.5,
+      maturityDate: '2024-12-31',
+    },
+    {
+      id: 3,
+      name: 'Pension Scheme',
+      interestRate: 6,
+      maturityDate: '2024-12-31',
+    },
+    
+  ],
 };
 
 const adminSlice = createSlice({
