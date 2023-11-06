@@ -68,3 +68,42 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+About the project:
+Your task (should you choose to accept it) is to design a thrift collection-based system that manages 
+members' monthly savings. 
+Use Case: Semako Thrifting Union needs a system to manage members monthly collections (Thrift 
+Collection system) 
+The company wants to be able to: 
+i. Allow members to create accounts by providing necessary personal information (e.g., name, 
+contact details) and generating a 15-character PIN for them.
+ii. Upon logging in, members should see their account details, including their current balance, 
+account history, and any active schemes they've enrolled in.
+iii. Members should be able to make payments into their accounts using various payment methods 
+(e.g., credit/debit cards, bank transfers).
+iv. Allow members to view and enroll in different schemes that offer yields and interests.
+v. From an admin panel to manage user accounts, view transaction history, and monitor the overall 
+system.
+vi. Deduct maintenance fees and admin fees from member accounts as per the system's rules and 
+schedules.
+vii. Ensure transparent communication with members about fee deductions.
+viii. Design pages to illustrate the flows in the items above. (Use your discretion and come up with 
+different schemes, rules and schedules.).
+ix. Implement secure user authentication mechanisms to protect member accounts.
+x. Implement logic for calculating and displaying scheme-specific information, such as interest rates 
+and maturity dates.
+xi. Implement the ability for admins to add, modify, or delete schemes, as well as set interest rates 
+and fees.
+xii. Implement a notification system to alert members about important updates, such as successful 
+payments, upcoming scheme maturity, or fee deductions.
+xiii. You can use dummy data to showcase how you consume endpoints.
+Acceptance Criteria
+i. Use React, Redux Only. Framework NOT allowed. 
+ii. Each component should be classified into earnings and deductions. iii. Expected 
+payroll components are basic, transport, housing, pension, tax etc. 
+Task Requirements
+I. We are on the lookout for the project structure, state management, and design pattern, among 
+other things. 
+II. Convert the problem above to a 1-2 page(front-end) technical spec. The specification should 
+describe how you intend to implement the solution. This document will change overtime and 
+should be up to date with the latest/final version of the implementation.
