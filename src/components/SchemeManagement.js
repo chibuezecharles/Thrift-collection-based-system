@@ -45,76 +45,86 @@ const SchemeManagement = () => {
   };
 
   return (
-    <div className='mt-5'>
+    <div className='mt-5 bg-white p-5 rounded shadow-lg'>
       {
         isAdmin && 
         <>
-          <h2>Admin Scheme Management</h2>
-          <h3>Add New Scheme:</h3>
-        <div className='mt-3'>
-          <label>Scheme Name</label>
-            <input
-              type="text"
-              placeholder="Scheme Name"
-              value={newScheme.name}
-              className="border rounded-md p-2 w-full "
-              onChange={(e) => setNewScheme({ ...newScheme, name: e.target.value })}
-            />
-        </div>
-          <div className='mt-3'>
-            <label>Interest Rate</label>
-            <input
-              type="number"
-              placeholder="Interest Rate"
-              value={newScheme.interestRate}
-              className="border rounded-md p-2 w-full"
-              onChange={(e) => setNewScheme({ ...newScheme, interestRate: e.target.value })}
-            />
-          </div>
-          <div className='mt-3'>
-            <label>Maturity Date</label>
-            <input
-              type="date"
-              placeholder="Maturity Date"
-              value={newScheme.maturityDate}
-              className="border rounded-md p-2 w-full mt-3"
-              onChange={(e) => setNewScheme({ ...newScheme, maturityDate: e.target.value })}
-            />
-          </div>
-          <button onClick={handleAddScheme}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 px-5 mt-5"
-          >
-            Add Scheme
-          </button>
+          <div className="flex justify-between flex-col sm:flex-row md:flex-row gap-10">
+            <div className='w-full'>
+                <h2 className='text-blue-500'>Admin Scheme Management</h2>
+                <h3 className='text-blue-500'>Add New Scheme:</h3>
+              <div className='mt-3'>
+                <label>Scheme Name</label>
+                  <input
+                    type="text"
+                    placeholder="Scheme Name"
+                    value={newScheme.name}
+                    className="border rounded-md p-2 w-full "
+                    onChange={(e) => setNewScheme({ ...newScheme, name: e.target.value })}
+                  />
+              </div>
+                <div className='mt-3'>
+                  <label>Interest Rate</label>
+                  <input
+                    type="number"
+                    placeholder="Interest Rate"
+                    value={newScheme.interestRate}
+                    className="border rounded-md p-2 w-full"
+                    onChange={(e) => setNewScheme({ ...newScheme, interestRate: e.target.value })}
+                  />
+                </div>
+                <div className='mt-3'>
+                  <label>Maturity Date</label>
+                  <input
+                    type="date"
+                    placeholder="Maturity Date"
+                    value={newScheme.maturityDate}
+                    className="border rounded-md p-2 w-full mt-3"
+                    onChange={(e) => setNewScheme({ ...newScheme, maturityDate: e.target.value })}
+                  />
+                </div>
+                <button onClick={handleAddScheme}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 px-5 mt-5"
+                >
+                  Add Scheme
+                </button>
+            </div>
 
-          <h3 className='mt-5'>Update Scheme:</h3>
-          <select onChange={(e) => setSelectedScheme(e.target.value)}>
-            <option value="">Select a Scheme to Update</option>
-            {schemes.map((scheme, index) => (
-              <option key={index} value={scheme.id}>
-                {scheme.name}
-              </option>
-            ))}
-          </select>
-          <button onClick={handleUpdateScheme}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 px-5 mt-5"
-          >Update Scheme
-          </button>
+            <div className='w-full'>
+              <h3 className='mt-5'>Delete Scheme:</h3>
+              <select onChange={(e) => setSelectedScheme(e.target.value)}
+                className="border rounded-md p-2 w-full"
+              >
+                <option value="">Select a Scheme to Delete</option>
+                {schemes.map((scheme,index) => (
+                  <option key={index} value={scheme.id}>
+                    {scheme.name}
+                  </option>
+                ))}
+              </select>
+              <button onClick={() => handleDeleteScheme(selectedScheme)}
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 px-5 mt-5"
+              >Delete Scheme</button>
+            </div>
+          </div>
 
-          <h3 className='mt-5'>Delete Scheme:</h3>
-          <select onChange={(e) => setSelectedScheme(e.target.value)}
-            className="border rounded-md p-2 w-full"
-          >
-            <option value="">Select a Scheme to Delete</option>
-            {schemes.map((scheme,index) => (
-              <option key={index} value={scheme.id}>
-                {scheme.name}
-              </option>
-            ))}
-          </select>
-          <button onClick={() => handleDeleteScheme(selectedScheme)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 px-5 mt-5"
-          >Delete Scheme</button>
+          <div>
+            <h3 className='mt-5'>Update Scheme:</h3>
+            <select onChange={(e) => setSelectedScheme(e.target.value)}>
+              <option value="">Select a Scheme to Update</option>
+              {schemes.map((scheme, index) => (
+                <option key={index} value={scheme.id}>
+                  {scheme.name}
+                </option>
+              ))}
+            </select>
+            <button onClick={handleUpdateScheme}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 px-5 mt-5"
+            >Update Scheme
+            </button>
+          </div>
+
+          
       </>
     }
     </div>

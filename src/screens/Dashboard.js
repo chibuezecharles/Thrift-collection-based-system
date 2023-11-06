@@ -14,7 +14,7 @@ const Dashboard = () => {
       {currentUser && 
         <div>
             <AccountDetails />
-          <div className='flex justify-between items-center flex-col sm:flex-row md:flex-row gap-5'>
+          <div className='flex justify-between flex-col sm:flex-row md:flex-row gap-5'>
             <Payments />
             <Schemes />
           </div>
