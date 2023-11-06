@@ -16,6 +16,7 @@ const SchemeManagement = () => {
   });
 
   const [selectedScheme, setSelectedScheme] = useState(null);
+  const [selectedSchemeId, setSelectedSchemeId] = useState(null);
 
   const handleAddScheme = () => {
     if (newScheme.name && newScheme.interestRate && newScheme.maturityDate) {
@@ -28,9 +29,26 @@ const SchemeManagement = () => {
   };
 
   const handleUpdateScheme = () => {
-    if (selectedScheme) {
-      dispatch(updateScheme(selectedScheme));
-      setSelectedScheme(null);
+    if (selectedSchemeId) {
+      console.log("selectedSchemeId update", selectedSchemeId)
+      // Find the selected scheme by ID
+      const selectedScheme = schemes.find((scheme) => scheme.name === selectedSchemeId);
+      
+      if (selectedScheme) {
+        // Create the updated scheme object
+        const updatedSchemeData = {
+          ...selectedScheme,
+          interestRate: newScheme.interestRate,
+          maturityDate: newScheme.maturityDate,
+        };
+        console.log("updatedSchemeData update", updatedSchemeData)
+        // Dispatch the updateScheme action with the updatedSchemeData
+        dispatch(updateScheme(updatedSchemeData));
+        
+        // Clear the selected scheme and input fields
+        setSelectedSchemeId(null);
+        setNewScheme({ name: '', interestRate: '', maturityDate: '' });
+      }
     }
   };
 
@@ -106,16 +124,36 @@ const SchemeManagement = () => {
             </div>
           </div>
 
-          <div>
+          <div className='w-full'>
             <h3 className='mt-5'>Update Scheme:</h3>
-            <select onChange={(e) => setSelectedScheme(e.target.value)}>
+            <select onChange={(e) => setSelectedSchemeId(e.target.value)}>
               <option value="">Select a Scheme to Update</option>
               {schemes.map((scheme, index) => (
-                <option key={index} value={scheme.id}>
+                <option key={index} value={scheme.name}>
                   {scheme.name}
                 </option>
               ))}
             </select>
+            <div className='mt-3'>
+              <label>Interest Rate</label>
+              <input
+                type="number"
+                placeholder="Interest Rate"
+                value={newScheme.interestRate}
+                className="border rounded-md p-2 w-full"
+                onChange={(e) => setNewScheme({ ...newScheme, interestRate: e.target.value })}
+              />
+            </div>
+            <div className='mt-3'>
+              <label>Maturity Date</label>
+              <input
+                type="date"
+                placeholder="Maturity Date"
+                value={newScheme.maturityDate}
+                className="border rounded-md p-2 w-full mt-3"
+                onChange={(e) => setNewScheme({ ...newScheme, maturityDate: e.target.value })}
+              />
+            </div>
             <button onClick={handleUpdateScheme}
               className="bg-blue-500 hover-bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300 px-5 mt-5"
             >Update Scheme
