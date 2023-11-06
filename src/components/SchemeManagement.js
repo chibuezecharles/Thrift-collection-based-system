@@ -126,7 +126,9 @@ const SchemeManagement = () => {
 
           <div className='w-full'>
             <h3 className='mt-5'>Update Scheme:</h3>
-            <select onChange={(e) => setSelectedSchemeId(e.target.value)}>
+            <select onChange={(e) => setSelectedSchemeId(e.target.value)}
+            className="border rounded-md p-2 w-full"
+            >
               <option value="">Select a Scheme to Update</option>
               {schemes.map((scheme, index) => (
                 <option key={index} value={scheme.name}>
