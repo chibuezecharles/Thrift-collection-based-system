@@ -22,10 +22,10 @@ const Payments = () => {
   }
 
   return (
-    <div className="bg-white p-5 rounded shadow-lg">
-      <h3 className="text-lg font-semibold mb-2">Make Payments</h3>
+    <div className="bg-white p-5 rounded shadow-lg w-full">
+      <h3 className="text-lg font-semibold mb-2 text-blue-500">Make Payments</h3>
       <p className="mb-4">
-        <strong>Name:</strong> {currentUser.fullName}
+        <strong className='text-blue-500'>Name:</strong> {currentUser.fullName}
       </p>
       <div className="mb-4">
         <label htmlFor="paymentMethod" className="block text-gray-700">

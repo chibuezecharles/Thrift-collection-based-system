@@ -32,7 +32,8 @@ const RegistrationForm = () => {
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center px-5">
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center px-5 flex-col">
+      <h1 className='text-center mt-3 mb-8 text-2xl font-semibold'>Thrift Collection-based System</h1>
       <div className="bg-white p-8 rounded-lg shadow-md w-full md:w-2/3 lg:w-1/3">
         <h2 className="text-2xl font-semibold mb-4">Registration</h2>
         <Formik

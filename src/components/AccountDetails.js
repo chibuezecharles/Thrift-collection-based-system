@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Payments from './Payments';
+
 
 const AccountDetails = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
@@ -15,15 +15,15 @@ const AccountDetails = () => {
 
   return (
     <div >
-      <h1 className='text-2xl font-bold'>Welcome, {currentUser.fullName}</h1>
-      <div className='my-3'>
-        <h3 className='text-lg font-semibold'>Account Details:</h3>
+      <h1 className='text-2xl font-bold text-blue-500 text-center'>Welcome, {currentUser.fullName}</h1>
+      <div className='my-5'>
+        <h3 className='text-lg font-semibold text-blue-500'>Account Details:</h3>
         <p>Email: {currentUser.email}</p>
         <p>PIN: {currentUser.pin}</p>
         <p>Role: {currentUser.role}</p>
       </div>
-      <div className='my-3'>
-        <h3 className='text-lg font-semibold'>Account History</h3>
+      <div className='my-3 overflow-auto'>
+        <h3 className='text-lg font-semibold text-blue-500'>Account History</h3>
         <table className='table-auto'>
           <thead>
             <tr>
@@ -46,9 +46,9 @@ const AccountDetails = () => {
         </table>
       </div>
       <div className='my-3'>
-        <p className='text-lg font-semibold'>Current Balance: {currentBalance}</p>
+        <p className='text-lg font-semibold text-blue-500'>Current Balance: {currentBalance}</p>
       </div>
-      <Payments />
+      
     </div>
   );
 };
